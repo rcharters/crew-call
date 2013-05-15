@@ -1,4 +1,6 @@
 class JobsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
+
   # GET /jobs
   # GET /jobs.json
   def index
@@ -40,7 +42,7 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = Job.new(params[:job])
+    @job = current_user.jobs.new(params[:job])
 
     respond_to do |format|
       if @job.save
@@ -56,7 +58,7 @@ class JobsController < ApplicationController
   # PUT /jobs/1
   # PUT /jobs/1.json
   def update
-    @job = Job.find(params[:id])
+    @job = current_user.jobs.find(params[:id])
 
     respond_to do |format|
       if @job.update_attributes(params[:job])

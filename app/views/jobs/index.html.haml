@@ -1,27 +1,41 @@
-%h1 Listing jobs
 
-%table
-  %tr
-    %th Position
-    %th Rate
-    %th Start date
-    %th End date
-    %th Is avaliable
-    %th
-    %th
-    %th
+.page-header
+  %ul.profile-title.inline
+    %li
+      %h1 Jobs Listing
+    %li
+      = link_to 'New Job', new_job_path, :class => 'btn btn-primary'
 
-  - @jobs.each do |job|
-    %tr
-      %td= job.position
-      %td= job.rate
-      %td= job.start_date
-      %td= job.end_date
-      %td= job.is_avaliable
-      %td= link_to 'Show', job
-      %td= link_to 'Edit', edit_job_path(job)
-      %td= link_to 'Destroy', job, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
+
+- @jobs.each do |job|
+  #job.well
+    %h4 Posted By: #{job.user.name}
+    %table
+      %tr
+        %th Position:
+        %td= job.position
+      %tr
+        %th Rate:
+        %td= job.rate
+      %tr
+        %th Start Date:
+        %td= job.start_date
+      %tr
+        %th End Date:
+        %td= job.end_date
+      %tr
+        %th Region:
+        %td= job.region
+      %tr
+        %th Location:
+        %td= job.location
+      %tr
+        %th Avaliable:
+        %td= job.is_avaliable
+    = link_to 'Show', job, :class => 'button btn btn-mini btn-primary'
+    = link_to 'Edit', edit_job_path(job), :class => 'button btn btn-mini btn-primary'
+    = link_to 'Destroy', job, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'button btn btn-mini btn-danger'
 %br
 
-= link_to 'New Job', new_job_path
+

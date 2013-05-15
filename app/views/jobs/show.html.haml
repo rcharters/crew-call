@@ -1,6 +1,9 @@
 %p#notice= notice
 
 %p
+  %b User ID:
+  = @job.user_id
+%p
   %b Position:
   = @job.position
 %p
@@ -12,6 +15,12 @@
 %p
   %b End date:
   = @job.end_date
+%p
+  %b Region:
+  = @job.region
+%p
+  %b Location:
+  = @job.location
 %p
   %b Is avaliable:
   = @job.is_avaliable

@@ -1,7 +1,6 @@
 class CreateJobs < ActiveRecord::Migration
   def change
     create_table :jobs do |t|
-      t.integer :user_id
       t.string :position
       t.integer :rate
       t.date :start_date
@@ -11,7 +10,6 @@ class CreateJobs < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :jobs, :user_id,        :unique => true
     add_index :jobs, :position
     add_index :jobs, :rate
     add_index :jobs, :is_avaliable

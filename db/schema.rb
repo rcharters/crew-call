@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515055040) do
+ActiveRecord::Schema.define(:version => 20130515074435) do
 
   create_table "jobs", :force => true do |t|
     t.string   "position"
@@ -21,7 +21,13 @@ ActiveRecord::Schema.define(:version => 20130515055040) do
     t.boolean  "is_avaliable"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "location"
+    t.string   "region"
+    t.integer  "user_id"
   end
+
+  add_index "jobs", ["region"], :name => "index_jobs_on_region"
+  add_index "jobs", ["user_id"], :name => "index_jobs_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
