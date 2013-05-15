@@ -1,5 +1,8 @@
 = link_to "Crew Call", root_path, :class => 'brand'
 %ul.nav
+  %li
+    = link_to 'Jobs Index', jobs_path
+%ul.nav.pull-right
   - if user_signed_in?
     %li
       = link_to 'Logout', destroy_user_session_path, :method=>'delete'
