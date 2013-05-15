@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Position:
+  = @job.position
+%p
+  %b Rate:
+  = @job.rate
+%p
+  %b Start date:
+  = @job.start_date
+%p
+  %b End date:
+  = @job.end_date
+%p
+  %b Is avaliable:
+  = @job.is_avaliable
+
+= link_to 'Edit', edit_job_path(@job)
+\|
+= link_to 'Back', jobs_path

@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   before_save :update_stripe
   before_destroy :cancel_subscription
 
+  has_many :jobs
+  has_many :user_friendships
+  has_many :friends, through: :user_friendships
+
   def update_plan(role)
     self.role_ids = []
     self.add_role(role.name)

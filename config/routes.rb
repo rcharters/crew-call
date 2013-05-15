@@ -1,4 +1,7 @@
 CrewCall::Application.routes.draw do
+  resources :jobs
+
+
   mount StripeEvent::Engine => '/stripe'
   get "content/gold"
   get "content/silver"
