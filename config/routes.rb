@@ -1,15 +1,17 @@
 CrewCall::Application.routes.draw do
   
-  mount StripeEvent::Engine => '/stripe'
-  get "content/gold"
-  get "content/silver"
-  get "content/platinum"
-  
   authenticated :user do
     root :to => 'home#index'
   end
 
   root :to => "home#index"
+
+  ActiveAdmin.routes(self)
+
+  mount StripeEvent::Engine => '/stripe'
+  get "content/gold"
+  get "content/silver"
+  get "content/platinum"
 
   devise_for :users, :controllers => { :registrations => 'registrations' }, :path => 'profile', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
 

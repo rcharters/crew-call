@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case current_user.roles.first.name
       when 'admin'
-        users_path
+        # users_path
+        resource.roles.first.name == 'admin' ? admin_dashboard_path : user_path(resource)
       when 'silver'
         content_silver_path
       when 'gold'
@@ -20,4 +21,26 @@ class ApplicationController < ActionController::Base
     end
   end
   
+
+  #
+  # redirect registered users to a profile page
+  # of to the admin dashboard if the user is an administrator
+  #
+
+  # def authorize_admin_user!
+  #   case current_user.roles.first.name
+  #     when 'admin'
+  #       :authorize_user! :authorize_admin_user!
+  #     else
+
+  #   end
+  # end
+    
+
+  #   user ||= User.new # guest user (not logged in)
+  #   if user.has_role? :admin
+  #     :authorize! :authorize_admin_user! @user, :message => 'Not authorized as an administrator.'
+  #   else
+  #   end
+
 end
